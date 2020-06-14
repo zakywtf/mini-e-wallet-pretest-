@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "afb66e27-aabd-4ffd-85e4-df26ce5e7376",
+		"name": "tes_privyid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"zaky\",\n\t\"password\":\"1234\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1234/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1234",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"zaky\",\n\t\"password\":\"1234\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1234/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1234",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "token",
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNWVlNWUzZTZkMWRiODQyMTU0YzdkMzc5IiwidXNlcm5hbWUiOiJ6YWt5IiwibGV2ZWwiOiIyIn0sImlhdCI6MTU5MjEzMDQxMywiZXhwIjoxNTkyMTM0MDEzfQ.5IyUXQv3pt0fQuX15N_Nv_w-sTu38JIwi9uF2zk3WPQ"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"zaky\",\n\t\"password\":\"1234\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1234/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1234",
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create balance bank",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNWVlNWUzZTZkMWRiODQyMTU0YzdkMzc5IiwidXNlcm5hbWUiOiJ6YWt5IiwibGV2ZWwiOiIyIn0sImlhdCI6MTU5MjEzMTU1NiwiZXhwIjoxNTkyMTM1MTU2fQ.JIi8Jwk140hEU4UUCXCGFgAeo0vlhXaYYPhv4VbA-eU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"balance\":700000,\n\t\"balance_achieve\":1000000,\n\t\"code\":\"123456789\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1234/api/v1/balance_bank/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1234",
+					"path": [
+						"api",
+						"v1",
+						"balance_bank",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user topup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNWVlNjIzZmM0MTM4YTEyZjIwOTc4NDg3IiwidXNlcm5hbWUiOiJ6YWt5IiwibGV2ZWwiOiIyIn0sImlhdCI6MTU5MjE1MTAwOSwiZXhwIjoxNTkyMTU0NjA5fQ.P-o70QLOh8pgMk5tDBTi6OA6QC5PrxSZ6NTdeA7ycmQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"topup\":100000,\n\t\"tipe\":\"debit\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1234/api/v1/users/topup/5ee5fffa99fdfc3160871022",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1234",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"topup",
+						"5ee5fffa99fdfc3160871022"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNWVlNjIzZmM0MTM4YTEyZjIwOTc4NDg3IiwidXNlcm5hbWUiOiJ6YWt5IiwibGV2ZWwiOiIyIn0sImlhdCI6MTU5MjE1ODM4OCwiZXhwIjoxNTkyMTYxOTg4fQ.o6H9xUxT1xvThQGkFDGEw-CgCyM4q_OIJ0VK0SHfzwE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transfer\":70000,\n\t\"tipe\":\"debit\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1234/api/v1/users/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1234",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
