@@ -8,6 +8,7 @@ import validateToken from './lib/validateToken';
 import signup from './controller/signup'
 import login from './controller/login';
 import logout from './controller/logout';
+import balanceBank from './controller/balanceBankCtrl';
 
 let app = xpress()
 dotenv.config()
@@ -24,6 +25,8 @@ app.get('/', (req, res)=>{
 app.use('/auth/signup', signup)
 app.use('/auth/login', login)
 app.use('/auth/logout', logout)
+
+app.use('/api/balance_bank', balanceBank)
 
 app.use('/api/v1/', validateToken)
 
