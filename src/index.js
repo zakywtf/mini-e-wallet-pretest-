@@ -2,6 +2,8 @@ import xpress from 'express'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 
+import {loadBalanceBank, loadUserBalance} from './lib/masterCache';
+
 import { connectDb } from './config/db';
 import authMiddleware from './lib/jwtAuthMiddleware';
 
@@ -31,7 +33,7 @@ app.use('/api/v1/balance_bank', balanceBank)
 
 
 connectDb().then(async () => {
-    app.listen(process.env.PORT, '127.0.0.1', () =>
+    app.listen(process.env.PORT, '127.0.0.1',loadBalanceBank(), loadBalanceBank(), () =>
       console.log(`Server connet on port ${process.env.PORT}`),
     );
 });
