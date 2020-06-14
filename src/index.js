@@ -4,6 +4,8 @@ import bodyParser from 'body-parser'
 
 import { connectDb } from './config/db';
 
+import signup from './controller/signup'
+
 
 let app = xpress()
 dotenv.config()
@@ -15,6 +17,9 @@ app.get('/', (req, res)=>{
   var message = 'Hello World!'
   res.send(message);
 })
+
+
+app.use('/auth/signup', signup)
 
 connectDb().then(async () => {
     app.listen(process.env.PORT, '127.0.0.1', () =>
