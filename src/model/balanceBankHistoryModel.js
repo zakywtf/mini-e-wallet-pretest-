@@ -6,8 +6,8 @@ class balanceBankHistoryModel extends Models{
         super(balance_bank_history)
     }
 
-    async saveHistory(obj){
-        const {balance_bank_id, balance_before, balance_after, activity, tipe, ip, location, user_agent, author}=obj
+    async saveHistory(balance_bank_id, balance_before, balance_after, activity, tipe, ip, location, user_agent, author){
+        console.log({balance_bank_id, balance_before, balance_after, activity, tipe, ip, location, user_agent, author});
         var history = await this.model.create({
             balance_bank_id,
             balance_before,
