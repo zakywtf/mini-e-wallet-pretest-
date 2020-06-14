@@ -54,7 +54,7 @@ class Models {
     }
 
     async insert(obj){
-        console.log(this.udata.payload);
+        console.log(this.udata);
         
         if(this.udata.payload.level<this.level)throw Error('Anda tidak punya akses untuk menambah data ini!')
 

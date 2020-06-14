@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 
 import { connectDb } from './config/db';
-import validateToken from './lib/validateToken';
+import authMiddleware from './lib/jwtAuthMiddleware';
 
 import signup from './controller/signup'
 import login from './controller/login';
@@ -26,9 +26,8 @@ app.use('/auth/signup', signup)
 app.use('/auth/login', login)
 app.use('/auth/logout', logout)
 
-app.use('/api/balance_bank', balanceBank)
-
-app.use('/api/v1/', validateToken)
+app.use('/api/v1/', authMiddleware)
+app.use('/api/v1/balance_bank', balanceBank)
 
 
 connectDb().then(async () => {

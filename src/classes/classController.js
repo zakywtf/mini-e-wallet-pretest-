@@ -20,6 +20,8 @@ function controller(model) {
     router.post('/create',async(req, res)=>{
         handleRequest(req, res, async (body)=>{
             model.setUdata(res.locals && res.locals.udata)
+            console.log({udata:res.locals});
+            
             await model.insert(body)
             return true
         })
