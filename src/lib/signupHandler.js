@@ -1,5 +1,8 @@
 import bcrypt from 'bcryptjs'
 import users from '../schema/users'
+import userBalanceModel from '../model/userBalanceModel';
+
+const USERBALANCE = new userBalanceModel()
 
 const signup = async(body) => {
     const {username, password} = body
@@ -7,7 +10,9 @@ const signup = async(body) => {
     body.level=2
     let userData = new users(body)
     // console.log(body);
-    await userData.save()
+    var data = await userData.save()
+    console.log({data});
+    await USERBALANCE.saveInitBalance(data.id)
     return true
 }
 
