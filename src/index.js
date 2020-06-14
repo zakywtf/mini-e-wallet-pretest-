@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 
 import { connectDb } from './config/db';
+import validateToken from './lib/validateToken';
 
 import signup from './controller/signup'
 import login from './controller/login';
@@ -23,6 +24,9 @@ app.get('/', (req, res)=>{
 app.use('/auth/signup', signup)
 app.use('/auth/login', login)
 app.use('/auth/logout', logout)
+
+app.use('/api/v1/', validateToken)
+
 
 connectDb().then(async () => {
     app.listen(process.env.PORT, '127.0.0.1', () =>
