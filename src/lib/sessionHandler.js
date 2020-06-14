@@ -39,6 +39,19 @@ const createSession = async(token) => {
     }
 }
 
+const deleteSession = async(udata) => {
+    var datas = {
+        udata:udata,
+        session:false,
+        isOnline:false,
+        lastOnline:moment().format('YYYY-MM-DD HH:mm:ss')
+
+    }
+    SESSION[`${udata.id}`] = datas
+    console.log(SESSION, 'sesi berakhir');
+
+}
+
 const checkSession = async(udata) => {
     var sessionData = SESSION[`${udata.id}`]
     console.log({sessionData});
@@ -51,5 +64,6 @@ const checkSession = async(udata) => {
 
 module.exports = {
     createSession,
-    decode
+    decode,
+    deleteSession
 }

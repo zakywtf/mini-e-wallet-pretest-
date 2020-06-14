@@ -6,6 +6,7 @@ import { connectDb } from './config/db';
 
 import signup from './controller/signup'
 import login from './controller/login';
+import logout from './controller/logout';
 
 let app = xpress()
 dotenv.config()
@@ -21,6 +22,7 @@ app.get('/', (req, res)=>{
 
 app.use('/auth/signup', signup)
 app.use('/auth/login', login)
+app.use('/auth/logout', logout)
 
 connectDb().then(async () => {
     app.listen(process.env.PORT, '127.0.0.1', () =>
