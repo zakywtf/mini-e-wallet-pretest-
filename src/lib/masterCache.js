@@ -2,10 +2,12 @@ import fetch from 'node-fetch';
 import balanceBankModel from '../model/balanceBankModel';
 import balanceBankHistoryModel from '../model/balanceBankHistoryModel';
 import userBalance from '../model/userBalanceModel';
+import userBalanceHistory from '../model/userBalanceHistoryModel';
 
 const BALANCEBANKMODEL = new balanceBankModel()
 const BALANCEBANKHISTORYMODEL = new balanceBankHistoryModel()
 const USERBALANCE = new userBalance()
+const USERBALANCEHISTORY = new userBalanceHistory()
 
 const BALANCEBANKLIST = {}
 const USERBALANCELIST = {}
@@ -42,6 +44,13 @@ const saveBalanceBank=async(id, balance)=>{
     data.save()
 }
 
+const updateUserBalanceTransfer=async(id, balance)=>{
+    let data = await USERBALANCE.getById(id)
+    // console.log({data});
+    data.balance += balance
+    data.save()
+}
+
 const updateUserBalanceTopup=async(userId, topup)=>{
     const user_balance = USERBALANCELIST[`${userId}`]
     if(user_balance){
@@ -73,11 +82,29 @@ const processTopup=async(bankId, topup, tipe, ip, user_agent, userId)=>{
     }
 }
 
+const processTransfer=async(userId, transfer, tipe, ip, user_agent)=>{
+    const user_balance = USERBALANCELIST[`${userId}`]
+
+    if(user_balance){
+        const min = transfer * -1
+        const balance_before = user_balance.balance
+        user_balance.balance += min
+        const balance_after = user_balance.balance
+        const activity = "Transfer"
+        const location = await getGeoLocation(ip)
+        const balanceId = user_balance.id
+
+        await updateUserBalanceTransfer(balanceId, min)
+        return await USERBALANCEHISTORY.saveHistory(balanceId, balance_before, balance_after, activity, tipe, ip, location.city, user_agent.source, user_agent.platform)
+    }
+}
+
 console.log({BALANCEBANKLIST, USERBALANCELIST});
 
 
 module.exports={
     loadBalanceBank,
     loadUserBalance,
-    processTopup
+    processTopup,
+    processTransfer
 }
